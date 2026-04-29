@@ -1,0 +1,219 @@
+<!--
+  SKF QuickCollect™ landing page — HEAD payload
+  Paste into HubSpot → Page Settings → Advanced Options → HEAD HTML.
+  All tokens are scoped under .applied-lp so this will not leak onto other pages.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Tokens (override these to match the DeWalt template visuals) ---------- */
+  .applied-lp {
+    --applied-primary: #c8102e;
+    --applied-primary-hover: #9c0c23;
+    --applied-text: #1a1a1a;
+    --applied-text-muted: #5a5a5a;
+    --applied-bg: #ffffff;
+    --applied-bg-alt: #f4f4f4;
+    --applied-border: #e0e0e0;
+    --applied-skf-blue: #0073cf;
+
+    --applied-font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --applied-font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+    --applied-radius: 4px;
+    --applied-container: 1200px;
+    --applied-section-pad-y: 4rem;
+    --applied-section-pad-y-mobile: 2.5rem;
+  }
+
+  /* ---------- Base ---------- */
+  .applied-lp,
+  .applied-lp * {
+    box-sizing: border-box;
+  }
+  .applied-lp {
+    font-family: var(--applied-font-body);
+    color: var(--applied-text);
+    background: var(--applied-bg);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  .applied-lp img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  .applied-lp a { color: var(--applied-primary); text-decoration: none; }
+  .applied-lp a:hover { text-decoration: underline; }
+
+  /* ---------- Typography ---------- */
+  .applied-lp h1,
+  .applied-lp h2,
+  .applied-lp h3 {
+    font-family: var(--applied-font-heading);
+    color: var(--applied-text);
+    margin: 0 0 0.75rem;
+  }
+  .applied-lp h1 { font-size: 2.75rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+  .applied-lp h2 { font-size: 2rem;    font-weight: 700; line-height: 1.2; }
+  .applied-lp h3 { font-size: 1.375rem; font-weight: 600; line-height: 1.3; }
+  .applied-lp p { margin: 0 0 1rem; }
+  .applied-lp .applied-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--applied-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ---------- Layout ---------- */
+  .applied-lp .applied-section {
+    padding: var(--applied-section-pad-y) 1.5rem;
+  }
+  .applied-lp .applied-section--alt { background: var(--applied-bg-alt); }
+  .applied-lp .applied-container {
+    max-width: var(--applied-container);
+    margin: 0 auto;
+  }
+  .applied-lp .applied-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* ---------- Buttons ---------- */
+  .applied-lp .applied-btn {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    font-family: var(--applied-font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    border-radius: var(--applied-radius);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    text-decoration: none;
+  }
+  .applied-lp .applied-btn--primary {
+    background: var(--applied-primary);
+    color: #ffffff;
+  }
+  .applied-lp .applied-btn--primary:hover {
+    background: var(--applied-primary-hover);
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .applied-lp .applied-btn--secondary {
+    background: transparent;
+    color: var(--applied-primary);
+    border-color: var(--applied-primary);
+  }
+  .applied-lp .applied-btn--secondary:hover {
+    background: var(--applied-primary);
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .applied-lp .applied-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  /* ---------- Hero ---------- */
+  .applied-lp .applied-hero { background: var(--applied-bg); }
+  .applied-lp .applied-hero__media img {
+    width: 100%;
+    border-radius: var(--applied-radius);
+  }
+
+  /* ---------- Trust badge ---------- */
+  .applied-lp .applied-trust-badge {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .applied-lp .applied-trust-badge__logo {
+    max-width: 180px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Product intro bullets ---------- */
+  .applied-lp .applied-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+  }
+  .applied-lp .applied-bullets li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .applied-lp .applied-bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    background: var(--applied-primary);
+    border-radius: 50%;
+  }
+
+  /* ---------- Features (sensor callout) ---------- */
+  .applied-lp .applied-features__title { margin-bottom: 2rem; }
+  .applied-lp .applied-features__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+  .applied-lp .applied-features__item {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .applied-lp .applied-features__num {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--applied-skf-blue);
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .applied-lp .applied-features__label {
+    font-weight: 700;
+    color: var(--applied-text);
+    margin: 0 0 0.25rem;
+    font-size: 1.0625rem;
+  }
+  .applied-lp .applied-features__desc {
+    color: var(--applied-skf-blue);
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .applied-lp .applied-section {
+      padding: var(--applied-section-pad-y-mobile) 1.25rem;
+    }
+    .applied-lp .applied-split {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .applied-lp h1 { font-size: 2.125rem; }
+    .applied-lp h2 { font-size: 1.625rem; }
+  }
+</style>

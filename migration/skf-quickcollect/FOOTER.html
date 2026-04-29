@@ -1,0 +1,32 @@
+<!--
+  SKF QuickCollect™ landing page — FOOTER payload
+  Paste into HubSpot → Page Settings → Advanced Options → FOOTER HTML.
+  Safe to leave even if a module is removed; nothing here throws on missing nodes.
+-->
+
+<script>
+(function () {
+  // Subtle fade-in on scroll for any element with .applied-reveal.
+  // No-op if no matching elements are on the page.
+  var nodes = document.querySelectorAll('.applied-lp .applied-reveal');
+  if (!nodes.length || !('IntersectionObserver' in window)) return;
+
+  nodes.forEach(function (n) {
+    n.style.opacity = '0';
+    n.style.transform = 'translateY(12px)';
+    n.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  nodes.forEach(function (n) { io.observe(n); });
+})();
+</script>
