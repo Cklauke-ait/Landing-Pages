@@ -16,13 +16,35 @@ Do not "just copy the page." Always produce the structured migration package des
 
 ---
 
+## Handling large source HTML
+
+Landing pages routinely carry 200KB+ of inline GTM, analytics, schema, and template HTML. Pulling that into the conversation directly will blow past the prompt size limit and kill the session. Follow these rules without exception:
+
+- **Never ask the user to paste raw HTML into chat.** Not the `<head>`, not the page body, not "just the relevant section."
+- **Never pipe full HTML through `cat`, `curl`, or `echo` in a Bash call.** Tool output that large lands in your context the same way pasted text does.
+- **Prefer `WebFetch`** — it runs a sub-prompt against the page and returns a summary, so the raw HTML never enters the main context.
+- **If `WebFetch` is blocked, JS-rendered, or behind auth**, ask the user to save the page as a file on disk (e.g. `migration/<page-slug>/_source/source.html`) and then use `Read` with `offset`/`limit` to walk it in ~500-line chunks. Extract what you need per chunk into the inventory; do not load the whole file at once.
+- **For very long minified files**, run `grep` / `rg` via Bash to locate the sections you care about (e.g. `rg -n "<section" source.html`) before reading those line ranges.
+- The same rules apply to the HubSpot reference page in Phase 2.
+
+---
+
 ## Workflow
 
 Run the four phases in order. Do not skip phases. After each phase, write the artifacts to disk before moving on so the work survives any interruption.
 
 ### Phase 1 — Extract source page (Link 1)
 
-Fetch Link 1 and inventory everything a rebuild would need. Use `WebFetch` first; if the page is JS-rendered or blocks fetch, ask the user for an HTML export or screenshot rather than guessing.
+Fetch Link 1 and inventory everything a rebuild would need. Use `WebFetch` first — it summarizes the page in a sub-prompt and keeps raw HTML out of your context.
+
+If `WebFetch` cannot reach the page (JS-rendered, login-gated, blocked):
+
+1. Ask the user to save the rendered page (browser → "Save Page As" → "Webpage, complete" or DevTools → copy outerHTML) to `migration/<page-slug>/_source/source.html`.
+2. Use `Read` with `offset` / `limit` to walk the file in chunks of ~500 lines, extracting inventory items as you go. Do **not** read the whole file in one shot.
+3. For minified HTML, run `rg -n "<section|<header|<footer|<h1|<h2"` etc. via Bash to find the line ranges that matter, then `Read` only those ranges.
+4. Only fall back to "ask the user for a screenshot" when even the saved-file path is unavailable.
+
+Never request the HTML pasted into chat.
 
 Capture:
 
@@ -41,7 +63,7 @@ Write Phase 1 output to `migration/<page-slug>/01-source-inventory.md`.
 
 ### Phase 2 — Analyze HubSpot reference (Link 2)
 
-Fetch Link 2 and identify the conventions the rebuild must follow.
+Fetch Link 2 and identify the conventions the rebuild must follow. Same fetch rules as Phase 1: `WebFetch` first; if blocked, have the user save the page to `migration/<page-slug>/_source/reference.html` and read it in chunks. Never request inline-pasted HTML.
 
 Capture:
 
@@ -100,6 +122,8 @@ Report any miss as an open item in the checklist with a concrete fix-it line.
 2. Confirm the project slug and the directory you'll write into (default: `migration/<page-slug>/` from repo root).
 3. Run Phase 1 → 4. Stream brief progress: "extracted N headings, M images, K CTAs", "identified X reusable modules", "wrote module-03-features.html", "QA: 2 open items".
 4. End with a summary: file tree of the package, count of modules, count of images, count of open QA items, and a one-line "to install" pointer.
+
+If a fetch fails, ask the user to save the rendered page to a file path you specify — never to paste the HTML into chat. See "Handling large source HTML" above.
 
 ---
 
