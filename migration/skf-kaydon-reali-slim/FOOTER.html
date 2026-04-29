@@ -1,0 +1,26 @@
+<!--
+  SKF Kaydon Reali-Slim Ball Bearings — FOOTER payload
+  Paste into HubSpot → Page Settings → Advanced Options → FOOTER HTML.
+  Toggles .animated.visible on scroll for any element with class "animated".
+  Safe to leave even if no .animated elements are present.
+-->
+
+<script>
+(function () {
+  var nodes = document.querySelectorAll('#applied-lp .animated');
+  if (!nodes.length) return;
+  if (!('IntersectionObserver' in window)) {
+    nodes.forEach(function (n) { n.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  nodes.forEach(function (n) { io.observe(n); });
+})();
+</script>

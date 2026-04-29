@@ -16,6 +16,20 @@ Do not "just copy the page." Always produce the structured migration package des
 
 ---
 
+## Applied / AIH migrations — read this first
+
+If the target template is the Applied Industrial Technologies LP template (default for `Cklauke-ait/Landing-Pages` and `Cklauke-ait/Applied-Industrial-Technologies` repos), the rebuild **must** follow `references/applied-lp-template-spec.md`. That spec defines:
+
+- A fixed 7-section page (hero → trust strip → image+text LEFT → image+text RIGHT → tile repeater → disclaimer → dark CTA).
+- Three deliverables only: `HEAD.html`, `FOOTER.html`, `SOURCE.html` (one `<main id="applied-lp">` containing every section).
+- Global brand tokens and button classes (`.btn_style1` / `.btn_style2` / `.btn_style3`) that **must not** be redeclared.
+
+For non-Applied work, fall back to the modular layout in `references/hubspot-output-format.md`.
+
+If the user provides a filled-in copy of `references/migration-intake-template.md`, run end-to-end without asking clarifying questions.
+
+---
+
 ## Handling large source HTML
 
 Landing pages routinely carry 200KB+ of inline GTM, analytics, schema, and template HTML. Pulling that into the conversation directly will blow past the prompt size limit and kill the session. Follow these rules without exception:
@@ -141,8 +155,15 @@ If a fetch fails, ask the user to save the rendered page to a file path you spec
 
 ## Reference files
 
-- `references/hubspot-output-format.md` — required folder layout, file naming, wrapper class, editable hooks, image and copy deck table formats.
-- `references/module-rebuild-rules.md` — mapping rules from common source sections to HubSpot modules; module naming and ordering.
+**Read these first when starting an Applied / AIH migration:**
+
+- `references/applied-lp-template-spec.md` — **authoritative** 7-section page template, brand tokens, button classes, deliverable shape (HEAD / FOOTER / SOURCE). Use this for every AIH migration.
+- `references/migration-intake-template.md` — the input shape the user (or their scraper agent) is expected to provide. If the user supplies a filled-in copy of this, no clarifying questions are needed.
+
+**Generic / legacy reference (use only when the AIH spec doesn't apply):**
+
+- `references/hubspot-output-format.md` — older modular folder layout (HEAD + FOOTER + per-module files). Pre-dates the AIH 7-section spec; kept for non-Applied work.
+- `references/module-rebuild-rules.md` — flexible module catalog mapping rules (legacy, generic).
 - `references/qa-checklist.md` — full QA checklist used in Phase 4. Copy into each migration's `assets/qa-checklist.md` and tick off as you verify.
 
 Read these references when starting a migration. They are short and authoritative.

@@ -1,0 +1,317 @@
+<!--
+  SKF Kaydon Reali-Slim Ball Bearings — HEAD payload
+  Paste into HubSpot → Page Settings → Advanced Options → HEAD HTML.
+  All custom CSS scoped under #applied-lp.
+  Does NOT redeclare brand tokens, font, or button styles — those are loaded globally.
+-->
+
+<!-- Suggested page meta — replace bracketed values in HubSpot Page Settings -->
+<title>SKF Kaydon Reali-Slim&reg; Ball Bearings | Applied&reg;</title>
+<meta name="description" content="[Meta description, ≤155 chars: SKF Kaydon Reali-Slim ball bearings — thin-section ball bearings for design flexibility and reduced weight.]">
+<meta property="og:title" content="SKF Kaydon Reali-Slim&reg; Ball Bearings | Applied&reg;">
+<meta property="og:description" content="[Meta description, ≤155 chars]">
+<meta property="og:image" content="[Hero Image URL]">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+  /* ---------- Section 1 — Hero (full-bleed) ---------- */
+  #applied-lp .applied-hero {
+    position: relative;
+    background-image: url('[Hero Background Image URL]');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 180px 0 140px;
+    color: #ffffff;
+  }
+  #applied-lp .applied-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+  }
+  #applied-lp .applied-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+  }
+  #applied-lp .applied-hero h1 {
+    color: #ffffff;
+    font-size: 62px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 24px;
+  }
+  #applied-lp .applied-hero p {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  #applied-lp .applied-hero__cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ---------- Section 2 — Trust strip ---------- */
+  #applied-lp .applied-trust-strip {
+    background: #ffffff;
+    border-bottom: 1px solid #EEEEEE;
+  }
+  #applied-lp .applied-trust-strip__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-height: 50px;
+    padding: 0 24px;
+  }
+  #applied-lp .applied-trust-strip__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #3A3A3A;
+  }
+  #applied-lp .applied-trust-strip__divider {
+    width: 1px;
+    height: 24px;
+    background: #E0E0E0;
+  }
+  #applied-lp .applied-trust-strip__icon {
+    width: 20px;
+    height: 20px;
+    color: #007b85;
+    flex-shrink: 0;
+  }
+  #applied-lp .applied-trust-strip__logo {
+    max-height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  /* ---------- Sections 3 & 4 — Floating-card splits ---------- */
+  #applied-lp .applied-split {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-items: center;
+    gap: 0;
+  }
+  #applied-lp .applied-split--right {
+    grid-template-columns: 40% 60%;
+  }
+  #applied-lp .applied-split__media img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+  }
+  #applied-lp .applied-split__card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
+    margin-left: -5%;
+    position: relative;
+    z-index: 1;
+  }
+  #applied-lp .applied-split--right .applied-split__card {
+    margin-left: 0;
+    margin-right: -5%;
+    background: rgba(217, 217, 217, 0.8);
+    order: -1;
+  }
+  #applied-lp .applied-split--right .applied-split__media {
+    order: 1;
+  }
+  #applied-lp .applied-split--right .applied-split__card h3 {
+    color: #007b85;
+  }
+  #applied-lp .applied-split__card h3 {
+    margin: 0 0 16px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  #applied-lp .applied-split__card p,
+  #applied-lp .applied-split__card ul {
+    margin: 0 0 16px;
+  }
+  #applied-lp .applied-split__card ul:last-child,
+  #applied-lp .applied-split__card p:last-child { margin-bottom: 0; }
+
+  /* ---------- Section 5 — Tile repeater with vertical sidebar ---------- */
+  #applied-lp .applied-tile-repeater {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  #applied-lp .applied-tile-repeater__sidebar {
+    position: sticky;
+    top: 80px;
+    height: 80px;
+  }
+  #applied-lp .applied-tile-repeater__sidebar-heading {
+    display: inline-block;
+    transform: rotate(-90deg) translateY(-100%);
+    transform-origin: top left;
+    white-space: nowrap;
+    font-size: 24px;
+    font-weight: 700;
+    border-left: 10px solid #007b85;
+    padding-left: 16px;
+    margin: 0;
+    line-height: 1;
+  }
+  #applied-lp .applied-tile-repeater__tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  #applied-lp .applied-tile {
+    border-radius: 8px;
+    padding: 32px;
+  }
+  #applied-lp .applied-tile--teal {
+    background: rgba(0, 123, 133, 0.5);
+    color: #ffffff;
+  }
+  #applied-lp .applied-tile--teal h3 { color: #ffffff; }
+  #applied-lp .applied-tile--teal a { color: #ffffff; }
+  #applied-lp .applied-tile--grey {
+    background: #F6F6F6;
+    color: #3A3A3A;
+  }
+  #applied-lp .applied-tile h3 {
+    margin: 0 0 16px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  #applied-lp .applied-tile ul { margin: 0; padding-left: 20px; }
+  #applied-lp .applied-tile li { margin-bottom: 8px; }
+  #applied-lp .applied-tile p { margin: 16px 0; }
+  #applied-lp .applied-tile img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  /* ---------- Section 6 — Disclaimer ---------- */
+  #applied-lp .applied-disclaimer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: #282b2d;
+    text-align: left;
+    line-height: 1.5;
+  }
+  #applied-lp .applied-disclaimer p { margin: 0 0 8px; }
+  #applied-lp .applied-disclaimer p:last-child { margin-bottom: 0; }
+
+  /* ---------- Section 7 — Dark CTA banner ---------- */
+  #applied-lp .applied-dark-cta {
+    position: relative;
+    background-image: url('[Dark CTA Background Image URL]');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 0;
+    color: #ffffff;
+    text-align: center;
+  }
+  #applied-lp .applied-dark-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+  #applied-lp .applied-dark-cta__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  #applied-lp .applied-dark-cta h2 {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin: 0 0 16px;
+  }
+  #applied-lp .applied-dark-cta p {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+
+  /* ---------- Scroll-reveal helper (toggled by FOOTER.html) ---------- */
+  #applied-lp .animated { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  #applied-lp .animated.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    #applied-lp .animated,
+    #applied-lp .animated.visible { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    #applied-lp .applied-hero h1 { font-size: 50px; }
+  }
+  @media (max-width: 768px) {
+    #applied-lp .applied-hero {
+      background-attachment: scroll;
+      padding: 120px 0 100px;
+    }
+    #applied-lp .applied-hero h1 { font-size: 46px; }
+
+    #applied-lp .applied-trust-strip__row {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 24px;
+    }
+    #applied-lp .applied-trust-strip__divider { display: none; }
+
+    #applied-lp .applied-split,
+    #applied-lp .applied-split--right {
+      grid-template-columns: 1fr;
+      padding: 48px 24px;
+    }
+    #applied-lp .applied-split__card,
+    #applied-lp .applied-split--right .applied-split__card {
+      width: 90%;
+      margin: -5% auto 0;
+      padding: 24px;
+    }
+    #applied-lp .applied-split--right .applied-split__card,
+    #applied-lp .applied-split--right .applied-split__media { order: initial; }
+
+    #applied-lp .applied-tile-repeater {
+      grid-template-columns: 1fr;
+      padding: 48px 24px;
+    }
+    #applied-lp .applied-tile-repeater__sidebar { display: none; }
+    #applied-lp .applied-tile-repeater__tiles {
+      grid-template-columns: 1fr;
+    }
+
+    #applied-lp .applied-dark-cta h2 { font-size: 28px; }
+  }
+</style>
