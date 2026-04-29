@@ -4,17 +4,18 @@
 
 | Field | Value |
 |-------|-------|
-| Source | SKF QuickCollect™ landing page on Applied.com (copy supplied by user) |
-| HubSpot reference | `https://content.applied.com/dewalt-atomic-20v-max` *(unreachable from build env; visual specs assumed — see "Open visual TODOs" below)* |
+| Source | SKF QuickCollect™ landing page on Applied.com (copy + images supplied by user) |
+| Target template | DeWalt Atomic 20V Max landing page (`https://content.applied.com/dewalt-atomic-20v-max`) |
+| Styleguide | AIH landing-page styleguide (teal `#007b85` + navy `#201c52`, DIN 2014, 4px radius / 50px pills) |
 | Page slug | `skf-quickcollect` |
-| Wrapper namespace | `.applied-lp` |
+| Wrapper namespace | `.aih-lp` |
 | Modules built | hero, trust-badge, product-intro, features (4 of 6 requested; videos skipped — none in source; service-center to be inserted by user) |
 
 ## Install (3 steps)
 
 1. **Paste `HEAD.html`** into the HubSpot page → Settings → Advanced Options → Head HTML.
 2. **Paste `FOOTER.html`** into the same panel → Footer HTML.
-3. **Paste each `modules/module-NN-*.html` file** into the page builder in numeric order (01 → 04). Each module is independently insertable; you can drop the user-supplied service-center module between 04 and the page bottom (or wherever it belongs).
+3. **Paste each `modules/module-NN-*.html` file** into the page builder in numeric order (01 → 04). Each module is independently insertable; drop your service-center module wherever it belongs.
 
 ## CDN swap
 
@@ -37,15 +38,9 @@ Files expected at `/skf-quickcollect/`:
 - `skf-quickcollect-in-use.jpg`
 - `skf-quickcollect-sensor-callout.png` *(use the plain sensor photo without overlay numbers — the LED labels are now real HTML)*
 
-## Open visual TODOs
+## Font note
 
-The DeWalt reference page was unreachable from the build environment, so visual specs were assumed. Reconcile these against the live DeWalt template before publishing:
-
-- `--applied-primary` (Applied red) — currently `#c8102e`. Override in `HEAD.html` if DeWalt template uses a different red or a different primary.
-- `--applied-font-heading` / `--applied-font-body` — currently Inter via Google Fonts. Override if the DeWalt template uses a system stack or another foundry.
-- Button radius (currently 4px) and padding — match the DeWalt CTA exactly if it differs.
-- Section vertical padding (currently 4rem desktop / 2.5rem mobile).
-- The trust-badge eyebrow text "Featured Manufacturer" was added (not in source). Replace or remove to match the DeWalt convention.
+`HEAD.html` declares `font-family: 'DIN 2014', sans-serif` but does not import the webfont — the parent HubSpot template is expected to load it site-wide. If the rebuild renders in the system fallback, add a webfont link or `@font-face` block at the top of `HEAD.html`.
 
 ## Open content items
 
@@ -54,6 +49,7 @@ See `assets/qa-checklist.md` "Sign-off" section. Highlights:
 - Source typo "instantly **provide** you with live readings" was kept verbatim. Decide whether to silently fix to "provides".
 - Page `<title>`, meta description, OG image — set in HubSpot Page Settings.
 - Final SKF logo SVG — supply approved version.
+- Two added strings flagged in `assets/copy-deck.md`: trust-badge eyebrow "Featured Manufacturer" and product-intro H2 "A smart vibration tool, made simple".
 
 ## New modules introduced
 

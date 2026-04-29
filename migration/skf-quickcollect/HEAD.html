@@ -1,219 +1,246 @@
 <!--
   SKF QuickCollect™ landing page — HEAD payload
   Paste into HubSpot → Page Settings → Advanced Options → HEAD HTML.
-  All tokens are scoped under .applied-lp so this will not leak onto other pages.
+  All tokens are scoped under .aih-lp so this will not leak onto other pages.
+  Token names match the AIH landing-page styleguide.
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-  /* ---------- Tokens (override these to match the DeWalt template visuals) ---------- */
-  .applied-lp {
-    --applied-primary: #c8102e;
-    --applied-primary-hover: #9c0c23;
-    --applied-text: #1a1a1a;
-    --applied-text-muted: #5a5a5a;
-    --applied-bg: #ffffff;
-    --applied-bg-alt: #f4f4f4;
-    --applied-border: #e0e0e0;
-    --applied-skf-blue: #0073cf;
+  /* ---------- Tokens (AIH styleguide) ---------- */
+  .aih-lp {
+    /* Brand */
+    --aih-primary: #007b85;
+    --aih-primary-hover: #005f66;
+    --aih-dark: #201c52;
+    --aih-heading-color: #000000;
 
-    --applied-font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-    --applied-font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    /* Neutrals */
+    --aih-text: #1a1a1a;
+    --aih-text-muted: #5a5a5a;
+    --aih-bg: #ffffff;
+    --aih-bg-alt: #f4f4f4;
+    --aih-border: #e0e0e0;
 
-    --applied-radius: 4px;
-    --applied-container: 1200px;
-    --applied-section-pad-y: 4rem;
-    --applied-section-pad-y-mobile: 2.5rem;
+    /* Typography */
+    --aih-font-family: 'DIN 2014', sans-serif;
+
+    /* Spacing scale */
+    --aih-space-xs: 8px;
+    --aih-space-sm: 16px;
+    --aih-space-md: 32px;
+    --aih-space-lg: 48px;
+    --aih-space-xl: 64px;
+
+    /* Radius */
+    --aih-radius: 4px;
+    --aih-radius-pill: 50px;
+
+    /* Shadows */
+    --aih-shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.08);
+    --aih-shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+    --aih-shadow-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05);
+
+    /* Motion */
+    --aih-transition: 0.3s ease;
+
+    /* Layout */
+    --aih-container: 1200px;
   }
 
   /* ---------- Base ---------- */
-  .applied-lp,
-  .applied-lp * {
-    box-sizing: border-box;
-  }
-  .applied-lp {
-    font-family: var(--applied-font-body);
-    color: var(--applied-text);
-    background: var(--applied-bg);
-    font-size: 1.0625rem;
+  .aih-lp,
+  .aih-lp * { box-sizing: border-box; }
+  .aih-lp {
+    font-family: var(--aih-font-family);
+    color: var(--aih-text);
+    background: var(--aih-bg);
+    font-size: 17px;
     line-height: 1.6;
   }
-  .applied-lp img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  .applied-lp a { color: var(--applied-primary); text-decoration: none; }
-  .applied-lp a:hover { text-decoration: underline; }
+  .aih-lp img { max-width: 100%; height: auto; display: block; }
+  .aih-lp a { color: var(--aih-primary); text-decoration: none; transition: color var(--aih-transition); }
+  .aih-lp a:hover { text-decoration: underline; }
 
   /* ---------- Typography ---------- */
-  .applied-lp h1,
-  .applied-lp h2,
-  .applied-lp h3 {
-    font-family: var(--applied-font-heading);
-    color: var(--applied-text);
-    margin: 0 0 0.75rem;
+  .aih-lp h1,
+  .aih-lp h2,
+  .aih-lp h3 {
+    font-family: var(--aih-font-family);
+    color: var(--aih-heading-color);
+    font-weight: 700;
+    margin: 0 0 var(--aih-space-sm);
   }
-  .applied-lp h1 { font-size: 2.75rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
-  .applied-lp h2 { font-size: 2rem;    font-weight: 700; line-height: 1.2; }
-  .applied-lp h3 { font-size: 1.375rem; font-weight: 600; line-height: 1.3; }
-  .applied-lp p { margin: 0 0 1rem; }
-  .applied-lp .applied-eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
+  .aih-lp h1 { font-size: 2.75rem;  line-height: 1.1; letter-spacing: -0.01em; }
+  .aih-lp h2 { font-size: 2rem;     line-height: 1.2; }
+  .aih-lp h3 { font-size: 1.375rem; line-height: 1.3; }
+  .aih-lp p { margin: 0 0 var(--aih-space-sm); }
+  .aih-lp .aih-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--applied-text-muted);
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+    color: var(--aih-dark);
+    margin-bottom: var(--aih-space-xs);
   }
 
   /* ---------- Layout ---------- */
-  .applied-lp .applied-section {
-    padding: var(--applied-section-pad-y) 1.5rem;
-  }
-  .applied-lp .applied-section--alt { background: var(--applied-bg-alt); }
-  .applied-lp .applied-container {
-    max-width: var(--applied-container);
-    margin: 0 auto;
-  }
-  .applied-lp .applied-split {
+  .aih-lp .aih-section { padding: var(--aih-space-xl) var(--aih-space-md); }
+  .aih-lp .aih-section--alt { background: var(--aih-bg-alt); }
+  .aih-lp .aih-container { max-width: var(--aih-container); margin: 0 auto; }
+  .aih-lp .aih-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: var(--aih-space-lg);
     align-items: center;
   }
 
   /* ---------- Buttons ---------- */
-  .applied-lp .applied-btn {
+  .aih-lp .aih-btn {
     display: inline-block;
-    padding: 0.875rem 1.75rem;
-    font-family: var(--applied-font-body);
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 14px 28px;
+    font-family: var(--aih-font-family);
+    font-size: 14px;
+    font-weight: 700;
     line-height: 1.2;
-    border-radius: var(--applied-radius);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: var(--aih-radius);
     border: 2px solid transparent;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    transition: background-color var(--aih-transition), color var(--aih-transition), border-color var(--aih-transition);
     text-decoration: none;
   }
-  .applied-lp .applied-btn--primary {
-    background: var(--applied-primary);
+  .aih-lp .aih-btn--primary {
+    background: var(--aih-primary);
     color: #ffffff;
   }
-  .applied-lp .applied-btn--primary:hover {
-    background: var(--applied-primary-hover);
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .applied-lp .applied-btn--secondary {
-    background: transparent;
-    color: var(--applied-primary);
-    border-color: var(--applied-primary);
-  }
-  .applied-lp .applied-btn--secondary:hover {
-    background: var(--applied-primary);
+  .aih-lp .aih-btn--primary:hover {
+    background: var(--aih-primary-hover);
     color: #ffffff;
     text-decoration: none;
   }
-  .applied-lp .applied-btn-group {
+  .aih-lp .aih-btn--secondary {
+    background: #ffffff;
+    color: var(--aih-primary);
+    border-color: var(--aih-primary);
+  }
+  .aih-lp .aih-btn--secondary:hover {
+    background: var(--aih-primary);
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .aih-lp .aih-btn-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
+    gap: var(--aih-space-sm);
+    margin-top: var(--aih-space-md);
   }
 
   /* ---------- Hero ---------- */
-  .applied-lp .applied-hero { background: var(--applied-bg); }
-  .applied-lp .applied-hero__media img {
+  .aih-lp .aih-hero { background: var(--aih-bg); }
+  .aih-lp .aih-hero__media img {
     width: 100%;
-    border-radius: var(--applied-radius);
+    border-radius: var(--aih-radius);
+    box-shadow: var(--aih-shadow-md);
   }
 
   /* ---------- Trust badge ---------- */
-  .applied-lp .applied-trust-badge {
+  .aih-lp .aih-trust-badge {
     text-align: center;
-    padding: 2.5rem 1.5rem;
+    padding: var(--aih-space-lg) var(--aih-space-md);
   }
-  .applied-lp .applied-trust-badge__logo {
+  .aih-lp .aih-trust-badge__logo {
     max-width: 180px;
     margin: 0 auto;
   }
 
   /* ---------- Product intro bullets ---------- */
-  .applied-lp .applied-bullets {
-    list-style: none;
-    padding: 0;
-    margin: 1.25rem 0 0;
-  }
-  .applied-lp .applied-bullets li {
+  .aih-lp .aih-bullets { list-style: none; padding: 0; margin: var(--aih-space-md) 0 0; }
+  .aih-lp .aih-bullets li {
     position: relative;
-    padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
+    padding-left: 28px;
+    margin-bottom: var(--aih-space-sm);
   }
-  .applied-lp .applied-bullets li::before {
+  .aih-lp .aih-bullets li::before {
     content: "";
     position: absolute;
     left: 0;
     top: 0.55rem;
-    width: 0.625rem;
-    height: 0.625rem;
-    background: var(--applied-primary);
+    width: 10px;
+    height: 10px;
+    background: var(--aih-primary);
     border-radius: 50%;
   }
 
-  /* ---------- Features (sensor callout) ---------- */
-  .applied-lp .applied-features__title { margin-bottom: 2rem; }
-  .applied-lp .applied-features__list {
+  /* ---------- Features (sensor controls callout) ---------- */
+  .aih-lp .aih-features__title { margin-bottom: var(--aih-space-md); }
+  .aih-lp .aih-features__list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 1.25rem;
+    gap: var(--aih-space-md);
   }
-  .applied-lp .applied-features__item {
+  .aih-lp .aih-features__item {
     display: grid;
-    grid-template-columns: 2.25rem 1fr;
-    gap: 1rem;
+    grid-template-columns: 36px 1fr;
+    gap: var(--aih-space-sm);
     align-items: start;
   }
-  .applied-lp .applied-features__num {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    background: var(--applied-skf-blue);
+  .aih-lp .aih-features__num {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--aih-radius-pill);
+    background: var(--aih-primary);
     color: #ffffff;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 16px;
   }
-  .applied-lp .applied-features__label {
+  .aih-lp .aih-features__label {
     font-weight: 700;
-    color: var(--applied-text);
-    margin: 0 0 0.25rem;
-    font-size: 1.0625rem;
+    color: var(--aih-heading-color);
+    margin: 0 0 4px;
+    font-size: 17px;
   }
-  .applied-lp .applied-features__desc {
-    color: var(--applied-skf-blue);
+  .aih-lp .aih-features__desc {
+    color: var(--aih-primary);
     margin: 0;
     line-height: 1.45;
   }
 
+  /* ---------- Animations ---------- */
+  @keyframes aih-fadeIn     { from { opacity: 0; }                                to { opacity: 1; } }
+  @keyframes aih-fadeInUp   { from { opacity: 0; transform: translateY(12px); }  to { opacity: 1; transform: translateY(0); } }
+  @keyframes aih-fadeInDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes aih-growUp     { from { opacity: 0; transform: scaleY(0.95); transform-origin: bottom; } to { opacity: 1; transform: scaleY(1); } }
+
+  .aih-lp .aih-reveal { opacity: 0; }
+  .aih-lp .aih-reveal.is-visible { animation: aih-fadeInUp var(--aih-transition) ease both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aih-lp .aih-reveal,
+    .aih-lp .aih-reveal.is-visible { animation: none; opacity: 1; transform: none; }
+    .aih-lp *,
+    .aih-lp *::before,
+    .aih-lp *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+    }
+  }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 768px) {
-    .applied-lp .applied-section {
-      padding: var(--applied-section-pad-y-mobile) 1.25rem;
-    }
-    .applied-lp .applied-split {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .applied-lp h1 { font-size: 2.125rem; }
-    .applied-lp h2 { font-size: 1.625rem; }
+    .aih-lp .aih-section { padding: var(--aih-space-lg) var(--aih-space-sm); }
+    .aih-lp .aih-split { grid-template-columns: 1fr; gap: var(--aih-space-md); }
+  }
+  @media (max-width: 480px) {
+    .aih-lp h1 { font-size: 2.125rem; }
+    .aih-lp h2 { font-size: 1.625rem; }
+    .aih-lp .aih-btn { padding: 12px 20px; font-size: 13px; }
+    .aih-lp .aih-btn-group { width: 100%; }
+    .aih-lp .aih-btn-group .aih-btn { flex: 1 1 auto; text-align: center; }
   }
 </style>

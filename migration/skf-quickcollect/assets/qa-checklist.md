@@ -41,7 +41,7 @@ Phase 4 verification. `[x]` = verified in this rebuild. `[ ]` = open / requires 
 
 - [x] Module order matches source section order: hero → trust badge → product intro → features.
 - [x] Sections that exist in source are not collapsed or merged silently.
-- [x] Wrapper class `.applied-lp` is on every module.
+- [x] Wrapper class `.aih-lp` is on every module.
 - [x] No raw `<style>` blocks inside modules; all styling lives in `HEAD.html`.
 - [x] No `<script>` tags inside modules; FOOTER.html holds the optional reveal script.
 - [x] Editable hooks (`editable-text`, `editable-rich`) on every text block a marketer would touch.
@@ -53,20 +53,20 @@ Phase 4 verification. `[x]` = verified in this rebuild. `[ ]` = open / requires 
 - [ ] Analytics / pixels. **Decision:** none added in HEAD.html — Applied's HubSpot template should already include site-wide tracking.
 - [ ] Schema.org JSON-LD. **Open:** if Applied wants Product schema for SEO, add to HEAD.html.
 - [ ] Third-party scripts. **Decision:** none — source page had nothing the rebuild requires.
-- [x] Custom fonts loaded once in HEAD.html (Inter via Google Fonts).
+- [x] Custom fonts: DIN 2014 declared in HEAD.html. **Note:** webfont not imported — parent HubSpot template is expected to load it. Add `@font-face` if rebuild renders in system fallback.
 
 ## Mobile and responsive
 
 - [x] Hero text remains readable at 375px width (h1 down-shifts to 2.125rem).
 - [x] No horizontal scroll on mobile breakpoints.
-- [x] Multi-column grids stack to single column at ≤768px (`.applied-split` collapses).
+- [x] Multi-column grids stack to single column at ≤768px (`.aih-split` collapses); 480px breakpoint trims hero/H2 sizes and makes button group full-width.
 - [x] No tables in the rebuild.
 - [x] Touch targets on CTAs are ≥44×44px (padding 0.875rem 1.75rem with line-height 1.2 yields ~46px).
 - [x] No background videos.
 
 ## HubSpot-specific
 
-- [x] Wrapper namespace `.applied-lp` consistent across modules and HEAD.
+- [x] Wrapper namespace `.aih-lp` consistent across modules and HEAD.
 - [x] CSS variables scoped under wrapper class, not `:root`.
 - [ ] Image CDN paths use the HubSpot portal's `hubfs/<portal-id>/` base. **Open:** placeholder `YOUR-PORTAL` / `YOUR-PORTAL-ID` must be find/replaced after import.
 - [x] Modules are independently insertable — removing one does not break siblings.
@@ -78,7 +78,7 @@ Phase 4 verification. `[x]` = verified in this rebuild. `[ ]` = open / requires 
 - [ ] No image larger than ~500KB without justification. **Open:** verify after upload.
 - [x] Lazy loading on below-the-fold images (`loading="lazy"` on modules 02–04; hero is `eager`).
 - [x] Heading hierarchy: H1 (hero) → H2 (product intro, features) → H3 (LED labels). Not skipped.
-- [x] Color contrast: white on `#c8102e` ≈ 5.9:1 (AA pass for body, AAA for large text). Body `#1a1a1a` on white = 19:1.
+- [x] Color contrast: white on `#007b85` (teal) ≈ 4.97:1 (AA pass for normal text, AAA for large). Body `#1a1a1a` on white = 19:1.
 - [x] Buttons are `<a>` elements (CTA links), not styled `<div>`s.
 
 ## Sign-off
@@ -86,4 +86,4 @@ Phase 4 verification. `[x]` = verified in this rebuild. `[ ]` = open / requires 
 - [ ] Rebuild reviewed by user.
 - [ ] All open items above resolved or explicitly accepted.
 - [ ] Final HubSpot CDN URLs swapped in (no `YOUR-PORTAL` / `YOUR-PORTAL-ID` left).
-- [ ] DeWalt-template visual specs reconciled with assumed defaults (font, primary color, button radius).
+- [x] Visual specs reconciled — AIH styleguide (teal `#007b85` + navy `#201c52`, DIN 2014, 4px / 50px radii, 8/16/32/48/64 spacing scale) applied in HEAD.html.

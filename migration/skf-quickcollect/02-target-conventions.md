@@ -1,48 +1,89 @@
 # Phase 2 — Target Conventions
 
-The DeWalt reference page (`https://content.applied.com/dewalt-atomic-20v-max`) was unreachable from this environment (sandbox `host_not_allowed`). Per user direction, the rebuild uses **sensible Applied® landing-page defaults** wired to CSS custom properties so visual specs can be tuned in HubSpot without touching module markup.
-
-Anything in this file is an **assumption to be validated** when the user pulls the package into HubSpot side-by-side with the DeWalt reference.
+Authoritative source: AIH landing-page styleguide supplied by user (2026-04-29). The DeWalt reference page (`https://content.applied.com/dewalt-atomic-20v-max`) is unreachable from this build environment, but the styleguide tokens below are confirmed and not assumptions.
 
 ## Wrapper / namespace
 
-- Top-level wrapper class: **`.applied-lp`**
-- All custom properties scoped under `.applied-lp` (not `:root`) so the rebuild does not leak onto the rest of the HubSpot template.
+- Top-level wrapper class: **`.aih-lp`**
+- Component class prefix: `aih-` (e.g. `aih-section`, `aih-hero`, `aih-btn`).
+- All custom properties scoped under `.aih-lp` (not `:root`) so the rebuild does not leak onto the rest of the HubSpot template.
 
-## Color tokens (assumed)
+## Color tokens (confirmed)
 
 | Token | Value | Use |
 |-------|-------|-----|
-| `--applied-primary` | `#c8102e` | Applied red — primary CTA bg, accent rules |
-| `--applied-primary-hover` | `#9c0c23` | Primary CTA hover |
-| `--applied-text` | `#1a1a1a` | Body and heading color |
-| `--applied-text-muted` | `#5a5a5a` | Secondary text, captions |
-| `--applied-bg` | `#ffffff` | Default section bg |
-| `--applied-bg-alt` | `#f4f4f4` | Alt section bg (trust badge, features) |
-| `--applied-border` | `#e0e0e0` | Hairline rules |
-| `--applied-skf-blue` | `#0073cf` | SKF brand accent — used on LED indicator dots in the sensor callout |
+| `--aih-primary` | `#007b85` | Teal — primary CTA bg, link color, bullet dots, feature accents |
+| `--aih-primary-hover` | `#005f66` | Primary CTA hover (derived; tune if styleguide specifies) |
+| `--aih-dark` | `#201c52` | Navy/purple — eyebrow text, secondary accents |
+| `--aih-heading-color` | `#000000` | All H1/H2/H3 |
 
-## Typography (assumed)
+Brand accent palette is **only** these two colors (teal + navy). No orange, yellow, gold, or any other accent. The earlier draft's SKF blue (`#0073cf`) and Applied red (`#c8102e`) have been removed.
 
-| Use | Family | Size | Weight | Line-height |
-|-----|--------|------|--------|-------------|
-| H1 | `'Inter', 'Helvetica Neue', Arial, sans-serif` | 2.75rem (44px) | 700 | 1.1 |
-| H2 | same | 2rem (32px) | 700 | 1.2 |
-| H3 | same | 1.375rem (22px) | 600 | 1.3 |
-| Body | same | 1.0625rem (17px) | 400 | 1.6 |
-| Eyebrow | same | 0.8125rem (13px) | 600, uppercase, +1px letter-spacing | 1.2 |
+| Neutral | Value | Use |
+|---------|-------|-----|
+| `--aih-text` | `#1a1a1a` | Body copy |
+| `--aih-text-muted` | `#5a5a5a` | Captions, secondary text |
+| `--aih-bg` | `#ffffff` | Default section bg |
+| `--aih-bg-alt` | `#f4f4f4` | Alt section bg (trust badge, features) |
+| `--aih-border` | `#e0e0e0` | Hairline rules |
 
-Font is loaded once in `HEAD.html` from Google Fonts (Inter). Swap to the DeWalt template's actual font family by overriding `--applied-font-heading` / `--applied-font-body`.
+## Typography (confirmed)
 
-## Buttons (assumed)
+- Font family: **DIN 2014, sans-serif** (`--aih-font-family`).
+- HEAD.html does **not** import the font — the parent HubSpot template should already load it. Add an `@font-face` or webfont link only if the host template does not.
+- Headings: color `#000000`, weight 700.
+- Body: 17px / 1.6.
 
-- **Primary**: solid `--applied-primary` bg, white text, 4px radius, padding `0.875rem 1.75rem`, weight 600, sentence case.
-- **Secondary**: transparent bg, 2px `--applied-primary` border, `--applied-primary` text, same padding/radius.
+| Element | Size | Weight | Line-height |
+|---------|------|--------|-------------|
+| H1 | 2.75rem (44px) | 700 | 1.1 |
+| H2 | 2rem (32px) | 700 | 1.2 |
+| H3 | 1.375rem (22px) | 700 | 1.3 |
+| Body | 17px | 400 | 1.6 |
+| Eyebrow | 13px | 700, uppercase, +0.5px letter-spacing | 1.2 |
 
-## Spacing
+## Buttons (confirmed)
 
-- Page container max-width: `1200px`, side padding `1.5rem`.
-- Section vertical padding: `4rem` desktop, `2.5rem` mobile.
+- Uppercase, weight 700, letter-spacing 0.5px (matches styleguide).
+- Padding `14px 28px`, radius `var(--aih-radius)` = 4px.
+- **Primary**: solid `--aih-primary` bg, white text. Hover → `--aih-primary-hover`.
+- **Secondary**: white bg, `--aih-primary` text, 2px `--aih-primary` border. Hover → fills with primary, white text.
+
+## Spacing scale (confirmed)
+
+| Token | Value |
+|-------|-------|
+| `--aih-space-xs` | 8px |
+| `--aih-space-sm` | 16px |
+| `--aih-space-md` | 32px |
+| `--aih-space-lg` | 48px |
+| `--aih-space-xl` | 64px |
+
+- Section vertical padding: `xl` desktop, `lg` mobile.
+- Section side padding: `md` desktop, `sm` mobile.
+- Split-column gap: `lg`.
+
+## Border radius (confirmed)
+
+- Standard: `4px` (`--aih-radius`) — buttons, images, cards.
+- Pill: `50px` (`--aih-radius-pill`) — feature numbered indicators, badges.
+
+## Shadows (confirmed — three levels)
+
+- `--aih-shadow-sm`, `--aih-shadow-md`, `--aih-shadow-lg`.
+- Hero image uses `md`. Other modules can opt in as needed.
+
+## Motion (confirmed)
+
+- `--aih-transition: 0.3s ease` for color / border-color / background changes.
+- Keyframes: `aih-fadeIn`, `aih-fadeInUp`, `aih-fadeInDown`, `aih-growUp`.
+- Reveal-on-scroll: add class `aih-reveal` to any element; FOOTER.html toggles `is-visible` when it scrolls into view.
+- `prefers-reduced-motion` zeroes out animations and transitions.
+
+## Breakpoints (confirmed)
+
+- Tablet ≤ 768px — split layouts collapse to single column.
+- Mobile ≤ 480px — heading sizes shrink, button padding tightens, button group goes full-width.
 
 ## Editable hooks
 
@@ -62,7 +103,7 @@ Find-and-replace this string after the HubSpot upload. See `README.md` "CDN swap
 ## Module catalog used
 
 - `hero` (module-01)
-- `trust-badge` (module-02) — band with "Featured manufacturer" eyebrow + single SKF logo
+- `trust-badge` (module-02) — band with "Featured Manufacturer" eyebrow + single SKF logo
 - `product-intro` (module-03) — split layout, copy left, lifestyle image right, 3-bullet benefits
 - `features` (module-04) — sensor controls callout: photo + 4 LED labels rebuilt as accessible HTML
 
