@@ -10,7 +10,7 @@
   .aih-lp {
     /* Brand */
     --aih-primary: #007b85;
-    --aih-primary-hover: #005f66;
+    --aih-primary-hover: #005c63;
     --aih-dark: #201c52;
     --aih-heading-color: #000000;
 
@@ -94,41 +94,88 @@
     align-items: center;
   }
 
-  /* ---------- Buttons ---------- */
+  /* ---------- Buttons (authoritative spec from AIH template) ---------- */
   .aih-lp .aih-btn {
     display: inline-block;
-    padding: 14px 28px;
+    padding: 0.875rem 2rem;
     font-family: var(--aih-font-family);
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border-radius: var(--aih-radius);
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0;
+    border-radius: 4px;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: background-color var(--aih-transition), color var(--aih-transition), border-color var(--aih-transition);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Primary — teal fill */
+  .aih-lp .aih-btn-primary {
+    background-color: var(--aih-primary);
+    color: #ffffff;
+    border: 2px solid var(--aih-primary);
+    box-shadow: 0 2px 8px rgba(0, 123, 133, 0.25);
+  }
+  .aih-lp .aih-btn-primary:hover {
+    background-color: var(--aih-primary-hover);
+    color: #ffffff;
+    border-color: var(--aih-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: none;
     text-decoration: none;
   }
-  .aih-lp .aih-btn--primary {
-    background: var(--aih-primary);
-    color: #ffffff;
-  }
-  .aih-lp .aih-btn--primary:hover {
-    background: var(--aih-primary-hover);
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .aih-lp .aih-btn--secondary {
-    background: #ffffff;
+
+  /* Secondary — white + subtle teal outline */
+  .aih-lp .aih-btn-secondary {
+    background-color: #ffffff;
     color: var(--aih-primary);
-    border-color: var(--aih-primary);
+    border: 1px solid rgba(0, 123, 133, 0.5);
   }
-  .aih-lp .aih-btn--secondary:hover {
-    background: var(--aih-primary);
+  .aih-lp .aih-btn-secondary:hover {
+    background-color: var(--aih-primary);
     color: #ffffff;
+    border-color: var(--aih-primary);
+    transform: translateY(-1px);
+    box-shadow: none;
     text-decoration: none;
   }
+
+  /* Hero primary — heavier glow for dark hero backgrounds */
+  .aih-lp .aih-btn-hero-primary {
+    background-color: var(--aih-primary);
+    color: #ffffff;
+    border: 2px solid var(--aih-primary);
+    box-shadow: 0 4px 14px rgba(0, 123, 133, 0.45);
+  }
+  .aih-lp .aih-btn-hero-primary:hover {
+    background-color: var(--aih-primary-hover);
+    color: #ffffff;
+    border-color: var(--aih-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: none;
+    text-decoration: none;
+  }
+
+  /* Hero secondary — white pill on dark hero backgrounds */
+  .aih-lp .aih-btn-hero-secondary {
+    background-color: #ffffff;
+    color: var(--aih-primary);
+    border: 1px solid rgba(0, 123, 133, 0.5);
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+  .aih-lp .aih-btn-hero-secondary:hover {
+    background-color: var(--aih-primary);
+    color: #ffffff;
+    border-color: var(--aih-primary);
+    transform: translateY(-1px);
+    box-shadow: none;
+    text-decoration: none;
+  }
+
   .aih-lp .aih-btn-group {
     display: flex;
     flex-wrap: wrap;
@@ -239,8 +286,7 @@
   @media (max-width: 480px) {
     .aih-lp h1 { font-size: 2.125rem; }
     .aih-lp h2 { font-size: 1.625rem; }
-    .aih-lp .aih-btn { padding: 12px 20px; font-size: 13px; }
     .aih-lp .aih-btn-group { width: 100%; }
-    .aih-lp .aih-btn-group .aih-btn { flex: 1 1 auto; text-align: center; }
+    .aih-lp .aih-btn-group .aih-btn { flex: 1 1 auto; }
   }
 </style>

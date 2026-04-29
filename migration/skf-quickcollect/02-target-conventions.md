@@ -13,7 +13,7 @@ Authoritative source: AIH landing-page styleguide supplied by user (2026-04-29).
 | Token | Value | Use |
 |-------|-------|-----|
 | `--aih-primary` | `#007b85` | Teal — primary CTA bg, link color, bullet dots, feature accents |
-| `--aih-primary-hover` | `#005f66` | Primary CTA hover (derived; tune if styleguide specifies) |
+| `--aih-primary-hover` | `#005c63` | Primary CTA hover (per AIH button spec) |
 | `--aih-dark` | `#201c52` | Navy/purple — eyebrow text, secondary accents |
 | `--aih-heading-color` | `#000000` | All H1/H2/H3 |
 
@@ -42,12 +42,26 @@ Brand accent palette is **only** these two colors (teal + navy). No orange, yell
 | Body | 17px | 400 | 1.6 |
 | Eyebrow | 13px | 700, uppercase, +0.5px letter-spacing | 1.2 |
 
-## Buttons (confirmed)
+Note: the uppercase + letter-spacing treatment applies to **eyebrows** only. Buttons are Title Case with no letter-spacing — see Buttons section below.
 
-- Uppercase, weight 700, letter-spacing 0.5px (matches styleguide).
-- Padding `14px 28px`, radius `var(--aih-radius)` = 4px.
-- **Primary**: solid `--aih-primary` bg, white text. Hover → `--aih-primary-hover`.
-- **Secondary**: white bg, `--aih-primary` text, 2px `--aih-primary` border. Hover → fills with primary, white text.
+## Buttons (confirmed — exact CSS supplied by user)
+
+Class structure: every button gets `aih-btn` (base) plus a variant — `aih-btn-primary`, `aih-btn-secondary`, `aih-btn-hero-primary`, or `aih-btn-hero-secondary`. **Hyphenated**, not BEM `--`.
+
+Shared base (`.aih-btn`):
+- Padding `0.875rem 2rem`, font-size `1rem`, weight 700, line-height `1.5`.
+- `text-transform: none` — Title Case in HTML, never uppercase.
+- `letter-spacing: 0` — no tracking.
+- `border-radius: 4px`, `border: 2px solid transparent`.
+- `transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease`.
+
+Variants:
+- **Primary** — teal fill, 2px teal border, soft glow `0 2px 8px rgba(0, 123, 133, 0.25)`. Hover: bg `#005c63`, `translateY(-1px)`, shadow off.
+- **Secondary** — white fill, teal text, 1px `rgba(0, 123, 133, 0.5)` border. Hover: fills solid teal, white text.
+- **Hero primary** — same as primary but heavier glow `0 4px 14px rgba(0, 123, 133, 0.45)`, for use on dark hero backgrounds.
+- **Hero secondary** — like secondary but `1rem 2rem` padding and `1.125rem` font-size.
+
+Hover always declares `color: #ffffff` explicitly (defends against HubSpot global CSS rewriting button text to teal). Hover never declares a glow — `box-shadow: none`.
 
 ## Spacing scale (confirmed)
 
