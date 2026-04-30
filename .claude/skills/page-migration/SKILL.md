@@ -159,6 +159,7 @@ If a fetch fails, ask the user to save the rendered page to a file path you spec
 
 - `references/applied-lp-template-spec.md` — **authoritative** 7-section page template, brand tokens, button classes, deliverable shape (HEAD / FOOTER / SOURCE). Use this for every AIH migration.
 - `references/migration-intake-template.md` — the input shape the user (or their scraper agent) is expected to provide. If the user supplies a filled-in copy of this, no clarifying questions are needed.
+- `references/scraper-prompt.md` — drop-in prompt for the upstream landing-page scraper. Its output lines up with the intake template so handoff is mechanical.
 
 **Generic / legacy reference (use only when the AIH spec doesn't apply):**
 
